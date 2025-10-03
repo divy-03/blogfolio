@@ -20,11 +20,13 @@ export default function Home() {
         chromaticAberration={0}
         dither={0}
         curvature={0}
-        tint="#32c90dff"
+        // tint="#32c90dff"
+        tint="#d97532ff"
         mouseReact={true}
         mouseStrength={0.1}
         pageLoadAnimation={false}
         brightness={0.5}
+        // backgroundColor="#855454ff"
       />
       <Terminal />
       <DockMenu />

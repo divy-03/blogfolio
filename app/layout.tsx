@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import IOSCursor from "@/components/Cursor";
 // import Sidebar from "./components/Sidebar";
 // import TOC from "./components/TOC";
 
@@ -31,6 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system">
+          <IOSCursor />
           <div className="flex">
             {/* <Sidebar /> */}
             {children}
