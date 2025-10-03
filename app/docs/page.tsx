@@ -1,6 +1,13 @@
-import { MDXComponents } from "../components/MDXComponents";
-import Introduction from "./introduction.mdx";
+import Introduction from './introduction.mdx'
 
-export default function DocsPage() {
-  return <Introduction components={MDXComponents} />;
+function CustomH1({ children }) {
+  return <h1 style={{ color: 'blue', fontSize: '100px' }}>{children}</h1>
+}
+
+const overrideComponents = {
+  h1: CustomH1,
+}
+
+export default function Page() {
+  return <Introduction components={overrideComponents} />
 }
