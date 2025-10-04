@@ -1,6 +1,7 @@
 // import MagicBento from "./MagicBento";
 import "../styles/hero.scss";
 import { GitBranch, Mail, FileText, Terminal, Contact } from "lucide-react";
+import Shuffle from "./Shuffle";
 
 export default function Hero() {
   const socialLinks = [
@@ -19,19 +20,32 @@ export default function Hero() {
   ];
   return (
     // <div className="heroCont w-screen h-screen z-20 flex flex-col lg:flex-row">
-    <div className="w-screen min-h-screen z-20 flex flex-col lg:flex-row">
+    <div className="w-screen min-h-screen z-20 flex flex-row lg:flex-row backdrop-blur-xl">
       {/* <MagicBento /> */}
       {/* <div className="heroLeft w-[40%] "> */}
-      <div className="w-full lg:w-[40%] p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
+      <div className="border border-amber-100 w-full lg:w-[50%] p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
         <div className="p-6 lg:p-8">
           <div className="flex items-center gap-2 mb-4 text-blue-500">
             <Terminal size={16} />
             <span className="text-xs font-mono">~/portfolio</span>
           </div>
 
-          <h1 className="font-(family-name:--monocraft) text-5xl md:text-6xl font-bold mb-2 text-blue-500 tracking-tight">
+          {/* <h1 style={{color: "rgb(132, 0, 255)"}} className="font-(family-name:--monocraft) text-5xl md:text-6xl font-bold mb-2 text-(--puple) tracking-tight">
             Divy Pathak
-          </h1>
+          </h1> */}
+          <Shuffle
+            text="Divy Pathak"
+            shuffleDirection="right"
+            duration={0.35}
+            animationMode="evenodd"
+            shuffleTimes={1}
+            ease="power3.out"
+            stagger={0.03}
+            threshold={0.1}
+            triggerOnce={true}
+            triggerOnHover={true}
+            respectReducedMotion={true}
+          />
 
           <div className="flex items-center gap-2 text-blue-400 font-mono text-lg">
             <span className="text-green-500">$</span>

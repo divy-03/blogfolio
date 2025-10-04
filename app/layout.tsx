@@ -31,7 +31,14 @@ export default function RootLayout({
       <head>
         {/* <link rel="preconnect" href="https://fonts.googleapis.com"> */}
         {/* <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> */}
-        <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double+Ink:wght@100..900&family=Bitcount+Prop+Single+Ink:wght@100..900&display=swap" rel="stylesheet"></link>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double+Ink:wght@100..900&family=Bitcount+Prop+Single+Ink:wght@100..900&display=swap"
+          rel="stylesheet"
+        ></link>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+          rel="stylesheet"
+        ></link>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -39,26 +46,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system">
           <IOSCursor />
           {/* FaultyTerminal as sticky background */}
-          <div className="fixed inset-0 -z-10">
+          <div className="fixed inset-0 -z-10 backdrop-blur-3xl">
             <FaultyTerminalWrapper
-              scale={1.5}
-              gridMul={[2, 1]}
-              digitSize={1}
-              timeScale={0.5}
-              pause={false}
-              scanlineIntensity={0.5}
-              glitchAmount={0.5}
-              flickerAmount={0.5}
-              noiseAmp={0.5}
-              chromaticAberration={0}
-              dither={0}
-              curvature={0}
-              tint="#d97532ff"
-              mouseReact={false}
-              mouseStrength={0.1}
-              pageLoadAnimation={true}
-              brightness={0.5}
-              // backgroundColor="#855454ff"
+            // backgroundColor="#855454ff"
             />
           </div>
           <div className="">

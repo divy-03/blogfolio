@@ -82,6 +82,7 @@ body {
   --sidebar-ring: oklch(0.708 0 0);
   --bitcoin: "Bitcoin", sans-serif;
   --monocraft: "Monocraft", sans-serif;
+  --puple: rgb(132, 0, 255);
 }
 
 .dark {
