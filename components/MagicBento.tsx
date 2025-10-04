@@ -39,7 +39,33 @@ const cardData: BentoCardProps[] = [
     description:
       "Auction based team formation platform for futsal tournaments with real-time bidding and player stats.",
     label: "Football player Auction Platform",
-    image: "https://picsum.photos/200/300",
+    image:
+      // "https://ik.imagekit.io/excl/Untitled%20design.png?updatedAt=1759604894662",
+      "https://ik.imagekit.io/excl/Kickbid.png"
+  },
+  {
+    color: "#060010",
+    title: "Leafman",
+    description:
+    "A leave management system with separate employee and admin interfaces for applying, tracking, and managing leave requests.",
+    label: "Leave Management System",
+    image:
+    "https://ik.imagekit.io/excl/Leafman.png",
+  },
+  {
+    color: "#060010",
+    title: "Hugo Blog",
+    description: "A personal blogging platform built with Hugo and customized using the Reimu theme. Deployed on netlify with custom CI/CD pipelines.",
+    label: "Personal Blogging Platform",
+    image: "https://ik.imagekit.io/excl/HugoBlog.png",
+  },
+  {
+    color: "#060010",
+    title: "Carido",
+    description:
+    "Features include advanced filtering, detailed car pages, image generation & uploads via ImageKit, and seamless seller-buyer interaction.",
+    label: "AI-Powered Car Marketplace Web App",
+    image: "https://ik.imagekit.io/excl/Carido.png",
   },
   {
     color: "#060010",
@@ -51,31 +77,9 @@ const cardData: BentoCardProps[] = [
   },
   {
     color: "#060010",
-    title: "Leafman",
-    description:
-      "A leave management system with separate employee and admin interfaces for applying, tracking, and managing leave requests.",
-    label: "Leave Management System",
-    image: "https://picsum.photos/400/300",
-  },
-  {
-    color: "#060010",
-    title: "Carido",
-    description:
-      "Features include advanced filtering, detailed car pages, image generation & uploads via ImageKit, and seamless seller-buyer interaction.",
-    label: "AI-Powered Car Marketplace Web App",
-    image: "https://picsum.photos/230/300",
-  },
-  {
-    color: "#060010",
-    title: "Hugo Blog",
-    description: "Enterprise-grade protection",
-    label: "Protection",
-    image: "https://picsum.photos/300/500",
-  },
-  {
-    color: "#060010",
     title: "Ochi.design",
-    description: "Ochi.design clone to discover design inspiration and display my gsap, animation skills.",
+    description:
+      "Ochi.design clone to discover design inspiration and display my gsap, animation skills.",
     label: "Clone with Animations",
     image: "https://picsum.photos/320/300",
   },
@@ -762,7 +766,7 @@ const MagicBento: React.FC<BentoProps> = ({
                   <img
                     src={card.image}
                     alt={card.title}
-                    className="w-[90%] h-[50%] m-auto"
+                    className="w-[90%] h-auto m-auto"
                   />
 
                   <div className="card__content flex flex-col relative text-white">
