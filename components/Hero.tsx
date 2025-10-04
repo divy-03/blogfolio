@@ -56,7 +56,7 @@ export default function Hero() {
 
           {/* ASCII Art */}
           <div className="mb-8">
-            <pre className="font-mono text-[6px] xs:text-[8px] sm:text-[10px] md:text-xs text-blue-400 leading-[1.1]">
+            <pre className="font-mono text-[6px] xs:text-[8px] sm:text-[10px] md:text-xs text-amber-50 leading-[1.1]">
               {String.raw`
          _nnnn_
         dGGGGMMb
