@@ -7,16 +7,16 @@ export default function Hero() {
   const socialLinks = [
     {
       icon: GitBranch,
-      href: "https://github.com/yourusername",
+      href: "https://github.com/divy-03",
       label: "GitHub",
     },
     {
       icon: Contact,
-      href: "https://linkedin.com/in/yourusername",
+      href: "https://www.linkedin.com/in/divy-pathak-318599250/",
       label: "LinkedIn",
     },
     { icon: Mail, href: "mailto:pathakdivy03@gmail.com", label: "Email" },
-    { icon: FileText, href: "/resume.pdf", label: "Resume" },
+    { icon: FileText, href: "https://drive.google.com/file/d/1M5s6rLg6F9-Odv_Uw0m1AFFR9BkSlD_F/view?usp=sharing", label: "Resume" },
   ];
 
   return (
