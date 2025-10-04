@@ -16,44 +16,47 @@ export default function Hero() {
       label: "LinkedIn",
     },
     { icon: Mail, href: "mailto:pathakdivy03@gmail.com", label: "Email" },
-    { icon: FileText, href: "/resume.pdf", label: "Resume" }, // todo: add resume
+    { icon: FileText, href: "/resume.pdf", label: "Resume" },
   ];
+
   return (
-    // <div className="heroCont w-screen h-screen z-20 flex flex-col lg:flex-row">
-    <div className="w-screen min-h-screen z-20 flex flex-row lg:flex-row backdrop-blur-xl">
-      {/* <MagicBento /> */}
-      {/* <div className="heroLeft w-[40%] "> */}
-      <div className="border border-amber-100 w-full lg:w-[50%] p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
-        <div className="p-6 lg:p-8">
-          <div className="flex items-center gap-2 mb-4 text-blue-500">
+    <div className="w-screen min-h-screen lg:h-screen flex flex-col lg:flex-row backdrop-blur-xl overflow-hidden">
+      {/* Left Section - Name and ASCII */}
+      <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-6 sm:p-8 lg:p-12 min-h-[50vh] lg:min-h-0">
+        <div className="w-full max-w-xl flex flex-col items-center">
+          {/* Terminal Header */}
+          <div className="flex items-center gap-2 mb-6 text-blue-500">
             <Terminal size={16} />
             <span className="text-xs font-mono">~/portfolio</span>
           </div>
 
-          {/* <h1 style={{color: "rgb(132, 0, 255)"}} className="font-(family-name:--monocraft) text-5xl md:text-6xl font-bold mb-2 text-(--puple) tracking-tight">
-            Divy Pathak
-          </h1> */}
-          <Shuffle
-            text="Divy Pathak"
-            shuffleDirection="right"
-            duration={0.35}
-            animationMode="evenodd"
-            shuffleTimes={1}
-            ease="power3.out"
-            stagger={0.03}
-            threshold={0.1}
-            triggerOnce={true}
-            triggerOnHover={true}
-            respectReducedMotion={true}
-          />
+          {/* Name */}
+          <div className="text-center mb-4">
+            <Shuffle
+              text="Divy Pathak"
+              shuffleDirection="right"
+              duration={0.35}
+              animationMode="evenodd"
+              shuffleTimes={1}
+              ease="power3.out"
+              stagger={0.03}
+              threshold={0.1}
+              triggerOnce={true}
+              triggerOnHover={true}
+              respectReducedMotion={true}
+            />
+          </div>
 
-          <div className="flex items-center gap-2 text-blue-400 font-mono text-lg">
+          {/* Role */}
+          <div className="flex items-center gap-2 text-blue-400 font-mono text-base sm:text-lg mb-8">
             <span className="text-green-500">$</span>
             <span className="animate-pulse">_</span>
             <span>Web Developer</span>
           </div>
-          <div className="hidden sm:block mt-4">
-            <pre className="font-mono text-[8px] sm:text-xs md:text-sm text-blue-400 leading-[1.1]">
+
+          {/* ASCII Art */}
+          <div className="mb-8">
+            <pre className="font-mono text-[6px] xs:text-[8px] sm:text-[10px] md:text-xs text-blue-400 leading-[1.1]">
               {String.raw`
          _nnnn_
         dGGGGMMb
@@ -74,49 +77,49 @@ _)      \.___.,|     .'
                 `}
             </pre>
           </div>
-        </div>
 
-        {/* Social Links */}
-        <div className="flex flex-wrap gap-2 sm:gap-3">
-          {socialLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group border-2 border-blue-600 bg-black hover:bg-yellow-200 transition-all duration-300 p-2 flex items-center gap-2"
-              aria-label={link.label}
-            >
-              <link.icon
-                size={20}
-                className="text-blue-400 group-hover:text-purple-900 transition-colors"
-              />
-              <span className="text-sm font-mono text-blue-400 group-hover:text-purple-900 transition-colors">
-                {link.label}
-              </span>
-            </a>
-          ))}
+          {/* Social Links */}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+            {socialLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group border-2 border-blue-600 bg-black hover:bg-yellow-200 transition-all duration-300 p-2 flex items-center gap-2"
+                aria-label={link.label}
+              >
+                <link.icon
+                  size={18}
+                  className="text-blue-400 group-hover:text-purple-900 transition-colors"
+                />
+                <span className="text-xs sm:text-sm font-mono text-blue-400 group-hover:text-purple-900 transition-colors">
+                  {link.label}
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* <div className="heroRight w-[60%]"> */}
-      <div className="w-full lg:w-[60%] p-4 sm:p-6 lg:p-8 flex flex-col justify-center">
-        <div className="p-4 sm:p-6">
-          <div className="flex items-center gap-2 mb-4">
-            {/* <div className="w-3 h-3 bg-red-500"></div>
-            <div className="w-3 h-3 bg-yellow-500"></div>
-            <div className="w-3 h-3 bg-green-500"></div> */}
+      {/* Right Section - About */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 lg:p-12 min-h-[50vh] lg:min-h-0">
+        <div className="w-full max-w-2xl">
+          {/* File Header */}
+          <div className="flex items-center gap-2 mb-6">
             <span className="text-xs font-mono text-blue-400 ml-auto">
               about.txt
             </span>
           </div>
 
-          <h2 className="flex items-center gap-2 text-2xl sm:text-3xl font-bold mb-4 text-blue-500 font-mono">
-            <Terminal size={32} />
+          {/* About Title */}
+          <h2 className="flex items-center gap-2 text-xl sm:text-2xl lg:text-3xl font-bold mb-6 text-blue-500 font-mono">
+            <Terminal size={28} />
             About_Me
           </h2>
 
-          <div className="space-y-3 sm:space-y-4 text-blue-300 font-mono text-sm sm:text-base leading-relaxed">
+          {/* About Content */}
+          <div className="space-y-3 sm:space-y-4 text-blue-300 font-mono text-xs sm:text-sm lg:text-base leading-relaxed">
             <p>
               <span className="text-green-500">{"{"}</span> Aspiring full-stack
               developer with experience in building robust web and mobile
@@ -145,7 +148,8 @@ _)      \.___.,|     .'
             </p>
           </div>
 
-          <div className="mt-4 sm:mt-6 pt-4 border-t border-blue-800">
+          {/* Tech Stack */}
+          <div className="mt-6 pt-4 border-t border-blue-800">
             <div className="flex flex-wrap gap-2">
               {[
                 "React",
@@ -157,7 +161,7 @@ _)      \.___.,|     .'
               ].map((tech, i) => (
                 <span
                   key={i}
-                  className="text-xs font-mono text-blue-400 border border-blue-800 px-2 py-1"
+                  className="text-xs font-mono text-blue-400 border border-blue-800 px-2 py-1 hover:bg-blue-900/20 transition-colors"
                 >
                   {tech}
                 </span>
