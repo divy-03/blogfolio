@@ -1,0 +1,43 @@
+.heroCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  //   border: 2px solid white;
+  // flex-direction: column;
+
+  > .heroLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border: 2px solid pink;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  > .heroRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+
+    > .aboutHead {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      > .he {
+        font-family: "Bitcount Prop Single Ink";
+        font-size: 4rem;
+      }
+    }
+  }
+}
+
+.myname {
+  font-family: "Bitcount Prop Single Ink";
+  font-size: 4rem;
+  color: blue;
+}
