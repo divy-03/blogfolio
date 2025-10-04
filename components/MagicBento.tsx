@@ -45,19 +45,19 @@ const cardData: BentoCardProps[] = [
   },
   {
     color: "#060010",
+    title: "Hugo Blog",
+    description: "A personal blogging platform built with Hugo and customized using the Reimu theme. Deployed on netlify with custom CI/CD pipelines.",
+    label: "Personal Blogging Platform",
+    image: "https://ik.imagekit.io/excl/HugoBlog.png",
+  },
+  {
+    color: "#060010",
     title: "Leafman",
     description:
     "A leave management system with separate employee and admin interfaces for applying, tracking, and managing leave requests.",
     label: "Leave Management System",
     image:
     "https://ik.imagekit.io/excl/Leafman.png",
-  },
-  {
-    color: "#060010",
-    title: "Hugo Blog",
-    description: "A personal blogging platform built with Hugo and customized using the Reimu theme. Deployed on netlify with custom CI/CD pipelines.",
-    label: "Personal Blogging Platform",
-    image: "https://ik.imagekit.io/excl/HugoBlog.png",
   },
   {
     color: "#060010",
@@ -73,15 +73,15 @@ const cardData: BentoCardProps[] = [
     description:
       "A comprehensive B2B supply chain management platform that connects suppliers and vendors",
     label: "Supply Chain Management Platform",
-    image: "https://picsum.photos/240/300",
+    image: "https://ik.imagekit.io/gox6cqdis/SupplySetu.png",
   },
   {
     color: "#060010",
-    title: "Ochi.design",
+    title: "Portfolio",
     description:
-      "Ochi.design clone to discover design inspiration and display my gsap, animation skills.",
-    label: "Clone with Animations",
-    image: "https://picsum.photos/320/300",
+      "Personal Portfolio older version developed to display my gsap, animation skills.",
+    label: "Portfolio with Animations",
+    image: "https://ik.imagekit.io/gox6cqdis/portfolio.png",
   },
 ];
 
