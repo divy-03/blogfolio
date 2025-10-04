@@ -3,8 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import IOSCursor from "@/components/Cursor";
-// import Sidebar from "./components/Sidebar";
-// import TOC from "./components/TOC";
+import { DockMenu } from "@/components/Dock";
+import FaultyTerminal from "@/components/FaultyTerminal"; // <-- Add this import
+import MagicBento from "@/components/MagicBento";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,11 +34,36 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system">
           <IOSCursor />
-          <div className="flex">
+          {/* FaultyTerminal as sticky background */}
+          <div className="fixed inset-0 -z-10 pointer-events-none">
+            <FaultyTerminal
+              scale={1.5}
+              gridMul={[2, 1]}
+              digitSize={1.2}
+              timeScale={0.5}
+              pause={false}
+              scanlineIntensity={0.5}
+              glitchAmount={0.5}
+              flickerAmount={0.5}
+              noiseAmp={0.5}
+              chromaticAberration={0}
+              dither={0}
+              curvature={0}
+              tint="#d97532ff"
+              mouseReact={true}
+              mouseStrength={0.1}
+              pageLoadAnimation={false}
+              brightness={0.5}
+              // backgroundColor="#855454ff"
+            />
+          </div>
+          <div className="">
             {/* <Sidebar /> */}
             {children}
             {/* <TOC /> */}
+            <MagicBento />
           </div>
+          {/* <DockMenu /> */}
         </ThemeProvider>
       </body>
     </html>

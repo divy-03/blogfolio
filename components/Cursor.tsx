@@ -53,8 +53,8 @@ export default function IOSCursor() {
       return {
         left: `${cursorPos.x}px`,
         top: `${cursorPos.y}px`,
-        width: '12px',
-        height: '12px',
+        width: '32px',
+        height: '32px',
         borderRadius: '50%',
         transform: 'translate(-50%, -50%)',
       };
@@ -83,7 +83,7 @@ export default function IOSCursor() {
         }`}
         style={{
           ...getCursorStyle(),
-          backgroundColor: hoveredElement ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.9)',
+          backgroundColor: hoveredElement ? '#0841ffc0' : '#0842ffef',
           backdropFilter: hoveredElement ? 'blur(4px)' : 'none',
         }}
       />
