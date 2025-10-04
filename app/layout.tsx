@@ -3,8 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import IOSCursor from "@/components/Cursor";
-import FaultyTerminal from "@/components/FaultyTerminal"; // <-- Add this import
 import { bitcount, monocraft } from "./font";
+import FaultyTerminalWrapper from "@/components/FaultyWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +40,7 @@ export default function RootLayout({
           <IOSCursor />
           {/* FaultyTerminal as sticky background */}
           <div className="fixed inset-0 -z-10">
-            <FaultyTerminal
+            <FaultyTerminalWrapper
               scale={1.5}
               gridMul={[2, 1]}
               digitSize={1}
