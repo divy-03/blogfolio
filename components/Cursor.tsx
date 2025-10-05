@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useRef, useState } from 'react';
 
 interface CursorPosition {
@@ -17,16 +16,34 @@ export default function IOSCursor() {
   const [cursorPos, setCursorPos] = useState<CursorPosition>({ x: 0, y: 0 });
   const [hoveredElement, setHoveredElement] = useState<HoveredElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
+  // Check if device is desktop
   useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsDesktop);
+    };
+  }, []);
+
+  // Mouse event listeners
+  useEffect(() => {
+    if (!isDesktop) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setCursorPos({ x: e.clientX, y: e.clientY });
       setIsVisible(true);
-
+      
       // Check if hovering over interactive elements
       const target = e.target as HTMLElement;
       const interactive = target.closest('button, a, [data-cursor-interactive]');
-
+      
       if (interactive instanceof HTMLElement) {
         const rect = interactive.getBoundingClientRect();
         setHoveredElement({ rect, element: interactive });
@@ -46,7 +63,7 @@ export default function IOSCursor() {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, []);
+  }, [isDesktop]);
 
   const getCursorStyle = () => {
     if (!hoveredElement) {
@@ -62,7 +79,7 @@ export default function IOSCursor() {
 
     const { rect } = hoveredElement;
     const padding = 8;
-
+    
     return {
       left: `${rect.left + rect.width / 2}px`,
       top: `${rect.top + rect.height / 2}px`,
@@ -75,28 +92,32 @@ export default function IOSCursor() {
 
   return (
     <>
-      {/* Custom Cursor */}
-      <div
-        ref={cursorRef}
-        className={`fixed pointer-events-none z-[9999] mix-blend-difference transition-all duration-200 ease-out ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        }`}
-        style={{
-          ...getCursorStyle(),
-          backgroundColor: hoveredElement ? '#0841ffc0' : '#0842ffef',
-          backdropFilter: hoveredElement ? 'blur(4px)' : 'none',
-        }}
-      />
-
-      {/* Global Style to hide default cursor */}
-      <style jsx global>{`
-        body {
-          cursor: none !important;
-        }
-        button, a, [data-cursor-interactive] {
-          cursor: none !important;
-        }
-      `}</style>
+      {/* Custom Cursor - Only render on desktop */}
+      {isDesktop && (
+        <div
+          ref={cursorRef}
+          className={`fixed pointer-events-none z-[9999] mix-blend-difference transition-all duration-200 ease-out ${
+            isVisible ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{
+            ...getCursorStyle(),
+            backgroundColor: hoveredElement ? '#0841ffc0' : '#0842ffef',
+            backdropFilter: hoveredElement ? 'blur(4px)' : 'none',
+          }}
+        />
+      )}
+      
+      {/* Global Style to hide default cursor - Only on desktop */}
+      {isDesktop && (
+        <style jsx global>{`
+          body {
+            cursor: none !important;
+          }
+          button, a, [data-cursor-interactive] {
+            cursor: none !important;
+          }
+        `}</style>
+      )}
     </>
   );
 }

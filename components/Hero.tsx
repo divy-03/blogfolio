@@ -1,17 +1,17 @@
 // import MagicBento from "./MagicBento";
 import "../styles/hero.scss";
-import { GitBranch, Mail, FileText, Terminal, Contact } from "lucide-react";
+import { Mail, FileText, Terminal, Github, Linkedin } from "lucide-react";
 import Shuffle from "./Shuffle";
 
 export default function Hero() {
   const socialLinks = [
     {
-      icon: GitBranch,
+      icon: Github,
       href: "https://github.com/divy-03",
       label: "GitHub",
     },
     {
-      icon: Contact,
+      icon: Linkedin,
       href: "https://www.linkedin.com/in/divy-pathak-318599250/",
       label: "LinkedIn",
     },
@@ -91,9 +91,9 @@ _)      \.___.,|     .'
               >
                 <link.icon
                   size={18}
-                  className="text-blue-400 group-hover:text-purple-900 transition-colors"
+                  className="text-cyan-200 group-hover:text-purple-900 transition-colors"
                 />
-                <span className="text-xs sm:text-sm font-mono text-blue-400 group-hover:text-purple-900 transition-colors">
+                <span className="text-xs sm:text-sm font-mono text-cyan-400 group-hover:text-purple-900 transition-colors">
                   {link.label}
                 </span>
               </a>
