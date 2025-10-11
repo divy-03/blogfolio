@@ -595,16 +595,16 @@ const useMobileDetection = () => {
 
 const MagicBento: React.FC<BentoProps> = ({
   textAutoHide = true,
-  enableStars = true,
-  enableSpotlight = true,
+  enableStars = false,
+  enableSpotlight = false,
   enableBorderGlow = true,
-  disableAnimations = false,
+  disableAnimations = true,
   spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS,
   particleCount = DEFAULT_PARTICLE_COUNT,
-  enableTilt = true,
+  enableTilt = false,
   glowColor = DEFAULT_GLOW_COLOR,
-  clickEffect = true,
-  enableMagnetism = true,
+  clickEffect = false,
+  enableMagnetism = false,
 }) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
@@ -793,15 +793,8 @@ const MagicBento: React.FC<BentoProps> = ({
                   >
                     {card.label}
                   </span>
-                  <p
-                    className={`card__description text-xs leading-5 opacity-90 ${
-                      textAutoHide ? "text-clamp-2" : ""
-                    }`}
-                  >
-                    {card.description}
-                  </p>
-                </div>
-              </div>
+                 </div>
+               </div>
             );
 
             if (enableStars) {
@@ -943,42 +936,60 @@ const MagicBento: React.FC<BentoProps> = ({
           })}
         </div>
       </BentoCardGrid>
-      {selectedCard && (
-        <Dialog
-          open={!!selectedCard}
-          onOpenChange={(isOpen) => {
-            if (!isOpen) setSelectedCard(null);
-          }}
-        >
-          <DialogContent className="bg-zinc-900 border-zinc-800 text-white w-[90vw] max-w-[90vw] sm:w-[70vw] sm:max-w-[70vw] h-[80vh] flex flex-col">
-            <DialogHeader>
-              <DialogTitle>{selectedCard.title}</DialogTitle>
-              <DialogDescription className="text-zinc-400">
-                {selectedCard.label}
-              </DialogDescription>
-            </DialogHeader>
-            <div className="flex-grow pr-4">
-              <img
-                src={selectedCard.image}
-                alt={selectedCard.title}
-                className="w-[70%] h-auto rounded-md mt-4 m-auto"
-              />
-            </div>
-            <div className="flex justify-end gap-4 mt-4 pt-4 border-t border-zinc-800">
-              <p className="text-zinc-300 mt-4">{selectedCard.description}</p>
-              {selectedCard.ghLink && (
-                <a href={selectedCard.ghLink} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-md text-white">
-                  GitHub
-                </a>
-              )}
-              {selectedCard.liveLink && (
-                <a href={selectedCard.liveLink} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-md text-white">
-                  Live Demo
-                </a>
-              )}
-            </div>
-          </DialogContent>
-        </Dialog>
+{selectedCard && (
+  <Dialog
+    open={!!selectedCard}
+    onOpenChange={(isOpen) => {
+      if (!isOpen) setSelectedCard(null);
+    }}
+  >
+    <DialogContent className="bg-zinc-900 border border-zinc-800 text-white w-[90vw] max-w-[700px] h-auto flex flex-col rounded-2xl shadow-2xl overflow-hidden">
+      <DialogHeader className="border-b border-zinc-800 pb-4">
+        <DialogTitle className="text-2xl font-semibold text-white tracking-wide">
+          {selectedCard.title}
+        </DialogTitle>
+        <DialogDescription className="text-zinc-400 text-sm mt-1">
+          {selectedCard.label}
+        </DialogDescription>
+      </DialogHeader>
+
+      <div className="flex-grow flex flex-col items-center justify-start overflow-y-auto">
+        <img
+          src={selectedCard.image}
+          alt={selectedCard.title}
+          className="w-[80%] max-h-[45vh] object-contain rounded-lg mt-6 shadow-md"
+        />
+
+        <p className="text-zinc-300 text-base mt-6 px-8 text-center leading-relaxed">
+          {selectedCard.description}
+        </p>
+      </div>
+
+      <div className="flex justify-center gap-4 mt-auto py-4 border-t border-zinc-800">
+        {selectedCard.ghLink && (
+          <a
+            href={selectedCard.ghLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-md text-sm font-medium transition-colors"
+          >
+            GitHub
+          </a>
+        )}
+        {selectedCard.liveLink && (
+          <a
+            href={selectedCard.liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2 bg-purple-600 hover:bg-purple-500 rounded-md text-sm font-medium transition-colors"
+          >
+            Live Demo
+          </a>
+        )}
+      </div>
+    </DialogContent>
+  </Dialog>
+
       )}
     </>
   );

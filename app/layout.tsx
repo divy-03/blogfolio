@@ -44,13 +44,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system">
-          <IOSCursor />
+          {/*<IOSCursor /> */}
           {/* FaultyTerminal as sticky background */}
-          <div className="fixed inset-0 -z-10 backdrop-blur-3xl">
+          {/* <div className="fixed inset-0 -z-10 backdrop-blur-3xl">
             <FaultyTerminalWrapper
             // backgroundColor="#855454ff"
             />
-          </div>
+          </div> */}
           <div className="">
             {/* <Sidebar /> */}
             {children}
