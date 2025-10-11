@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import IOSCursor from "@/components/Cursor";
 import { bitcount, monocraft } from "./font";
-import FaultyTerminalWrapper from "@/components/FaultyWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,19 +42,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system">
-          {/*<IOSCursor /> */}
-          {/* FaultyTerminal as sticky background */}
-          {/* <div className="fixed inset-0 -z-10 backdrop-blur-3xl">
-            <FaultyTerminalWrapper
-            // backgroundColor="#855454ff"
-            />
-          </div> */}
-          <div className="">
-            {/* <Sidebar /> */}
-            {children}
-            {/* <TOC /> */}
-          </div>
-          {/* <DockMenu /> */}
+          <div className="">{children}</div>
         </ThemeProvider>
       </body>
     </html>
