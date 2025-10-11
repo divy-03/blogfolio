@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { bitcount, monocraft } from "./font";
+import BackgroundAnimation from "@/components/BackgroundAnimation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="fixed inset-0 -z-10 backdrop-blur-3xl">
+          <BackgroundAnimation
+          // backgroundColor="#6e18c4"
+          />
+        </div>
         <ThemeProvider attribute="class" defaultTheme="system">
           <div className="">{children}</div>
         </ThemeProvider>
