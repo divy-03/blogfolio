@@ -52,37 +52,37 @@ const cardData: BentoCardProps[] = [
       // "https://ik.imagekit.io/excl/Untitled%20design.png?updatedAt=1759604894662",
       "https://ik.imagekit.io/excl/Kickbid.png",
     liveLink: "https://kickbid.onrender.com",
-    ghLink: "https://github.com/divy-03/kickbid-client-js"
+    ghLink: "https://github.com/divy-03/kickbid-client-js",
   },
   {
     color: "#060010",
     title: "Hugo Blog",
-    description: "A personal blogging platform built with Hugo and customized using the Reimu theme. Deployed on netlify with custom CI/CD pipelines.",
+    description:
+      "A personal blogging platform built with Hugo and customized using the Reimu theme. Deployed on netlify with custom CI/CD pipelines.",
     label: "Personal Blogging Platform",
     image: "https://ik.imagekit.io/excl/HugoBlog.png",
     liveLink: "https://blog-excl.netlify.app",
-    ghLink: "https://github.com/divy-03/hugo-blog-website"
+    ghLink: "https://github.com/divy-03/hugo-blog-website",
   },
   {
     color: "#060010",
     title: "Leafman",
     description:
-    "A leave management system with separate employee and admin interfaces for applying, tracking, and managing leave requests.",
+      "A leave management system with separate employee and admin interfaces for applying, tracking, and managing leave requests.",
     label: "Leave Management System",
-    image:
-    "https://ik.imagekit.io/excl/Leafman.png",
+    image: "https://ik.imagekit.io/excl/Leafman.png",
     liveLink: "https://leafront.vercel.app",
-    ghLink: "https://github.com/divy-03/Leafront"
+    ghLink: "https://github.com/divy-03/Leafront",
   },
   {
     color: "#060010",
     title: "Carido",
     description:
-    "Features include advanced filtering, detailed car pages, image generation & uploads via ImageKit, and seamless seller-buyer interaction.",
+      "Features include advanced filtering, detailed car pages, image generation & uploads via ImageKit, and seamless seller-buyer interaction.",
     label: "AI-Powered Car Marketplace Web App",
     image: "https://ik.imagekit.io/excl/Carido.png",
     liveLink: "https://carido.vercel.app",
-    ghLink: "https://github.com/divy-03/car-app"
+    ghLink: "https://github.com/divy-03/car-app",
   },
   {
     color: "#060010",
@@ -92,7 +92,7 @@ const cardData: BentoCardProps[] = [
     label: "Supply Chain Management Platform",
     image: "https://ik.imagekit.io/gox6cqdis/SupplySetu.png",
     liveLink: "https://supplysetu-client.onrender.com",
-    ghLink: "https://github.com/hackathonseries/Supply-Setu"
+    ghLink: "https://github.com/hackathonseries/Supply-Setu",
   },
   {
     color: "#060010",
@@ -102,7 +102,7 @@ const cardData: BentoCardProps[] = [
     label: "Portfolio with Animations",
     image: "https://ik.imagekit.io/gox6cqdis/portfolio.png",
     liveLink: "https://portfolio-divy.netlify.app",
-    ghLink: "https://github.com/divy-03/MyPortfolio"
+    ghLink: "https://github.com/divy-03/MyPortfolio",
   },
 ];
 
@@ -609,9 +609,7 @@ const MagicBento: React.FC<BentoProps> = ({
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
-  const [selectedCard, setSelectedCard] = useState<BentoCardProps | null>(
-    null
-  );
+  const [selectedCard, setSelectedCard] = useState<BentoCardProps | null>(null);
 
   return (
     <>
@@ -793,8 +791,8 @@ const MagicBento: React.FC<BentoProps> = ({
                   >
                     {card.label}
                   </span>
-                 </div>
-               </div>
+                </div>
+              </div>
             );
 
             if (enableStars) {
@@ -936,60 +934,59 @@ const MagicBento: React.FC<BentoProps> = ({
           })}
         </div>
       </BentoCardGrid>
-{selectedCard && (
-  <Dialog
-    open={!!selectedCard}
-    onOpenChange={(isOpen) => {
-      if (!isOpen) setSelectedCard(null);
-    }}
-  >
-    <DialogContent className="bg-zinc-900 border border-zinc-800 text-white w-[90vw] lg:w-[70vw] h-auto flex flex-col rounded-2xl shadow-2xl overflow-hidden">
-      <DialogHeader className="border-b border-zinc-800 pb-4">
-        <DialogTitle className="text-2xl font-semibold text-white tracking-wide">
-          {selectedCard.title}
-        </DialogTitle>
-        <DialogDescription className="text-zinc-400 text-sm mt-1">
-          {selectedCard.label}
-        </DialogDescription>
-      </DialogHeader>
+      {selectedCard && (
+        <Dialog
+          open={!!selectedCard}
+          onOpenChange={(isOpen) => {
+            if (!isOpen) setSelectedCard(null);
+          }}
+        >
+          <DialogContent className="bg-zinc-900 border border-zinc-800 text-white w-[90vw] lg:w-[70vw] lg:max-w-[1200px] h-auto flex flex-col rounded-2xl shadow-2xl overflow-hidden">
+            <DialogHeader className="border-b border-zinc-800 pb-4">
+              <DialogTitle className="text-2xl font-semibold text-white tracking-wide">
+                {selectedCard.title}
+              </DialogTitle>
+              <DialogDescription className="text-zinc-400 text-sm mt-1">
+                {selectedCard.label}
+              </DialogDescription>
+            </DialogHeader>
 
-      <div className="flex-grow flex flex-col items-center justify-start overflow-hidden">
-        <img
-          src={selectedCard.image}
-          alt={selectedCard.title}
-          className="w-[100%] max-h-[40vh] object-contain rounded-lg mt-6 shadow-md"
-        />
+            <div className="flex-grow flex flex-col items-center justify-start overflow-hidden">
+              <img
+                src={selectedCard.image}
+                alt={selectedCard.title}
+                className="w-[100%] max-h-[60vh] object-contain rounded-lg mt-6"
+              />
 
-        <p className="text-zinc-300 text-base mt-6 px-8 text-center leading-relaxed">
-          {selectedCard.description}
-        </p>
-      </div>
+              <p className="text-zinc-300 text-base mt-6 px-8 text-center leading-relaxed">
+                {selectedCard.description}
+              </p>
+            </div>
 
-      <div className="flex justify-center gap-4 mt-auto py-4 border-t border-zinc-800">
-        {selectedCard.ghLink && (
-          <a
-            href={selectedCard.ghLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-md text-sm font-medium transition-colors"
-          >
-            GitHub
-          </a>
-        )}
-        {selectedCard.liveLink && (
-          <a
-            href={selectedCard.liveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2 bg-purple-600 hover:bg-purple-500 rounded-md text-sm font-medium transition-colors"
-          >
-            Live Demo
-          </a>
-        )}
-      </div>
-    </DialogContent>
-  </Dialog>
-
+            <div className="flex justify-center gap-4 mt-auto py-4 border-t border-zinc-800">
+              {selectedCard.ghLink && (
+                <a
+                  href={selectedCard.ghLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-md text-sm font-medium transition-colors"
+                >
+                  GitHub
+                </a>
+              )}
+              {selectedCard.liveLink && (
+                <a
+                  href={selectedCard.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2 bg-purple-600 hover:bg-purple-500 rounded-md text-sm font-medium transition-colors"
+                >
+                  Live Demo
+                </a>
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
       )}
     </>
   );
