@@ -943,7 +943,7 @@ const MagicBento: React.FC<BentoProps> = ({
       if (!isOpen) setSelectedCard(null);
     }}
   >
-    <DialogContent className="bg-zinc-900 border border-zinc-800 text-white w-[90vw] max-w-[700px] h-auto flex flex-col rounded-2xl shadow-2xl overflow-hidden">
+    <DialogContent className="bg-zinc-900 border border-zinc-800 text-white w-[90vw] lg:w-[70vw] h-auto flex flex-col rounded-2xl shadow-2xl overflow-hidden">
       <DialogHeader className="border-b border-zinc-800 pb-4">
         <DialogTitle className="text-2xl font-semibold text-white tracking-wide">
           {selectedCard.title}
@@ -953,11 +953,11 @@ const MagicBento: React.FC<BentoProps> = ({
         </DialogDescription>
       </DialogHeader>
 
-      <div className="flex-grow flex flex-col items-center justify-start overflow-y-auto">
+      <div className="flex-grow flex flex-col items-center justify-start overflow-hidden">
         <img
           src={selectedCard.image}
           alt={selectedCard.title}
-          className="w-[80%] max-h-[45vh] object-contain rounded-lg mt-6 shadow-md"
+          className="w-[100%] max-h-[40vh] object-contain rounded-lg mt-6 shadow-md"
         />
 
         <p className="text-zinc-300 text-base mt-6 px-8 text-center leading-relaxed">
