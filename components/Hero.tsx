@@ -1,9 +1,36 @@
-// import MagicBento from "./MagicBento";
+
+"use client";
+
 import "../styles/hero.scss";
 import { Mail, FileText, Terminal, Github, Linkedin } from "lucide-react";
 import Shuffle from "./Shuffle";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function Hero() {
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 2} });
+
+    // Animate left section
+    tl.from(leftRef.current, {
+      x: -80,
+      opacity: 0,
+    });
+
+    // Animate right section slightly after
+    tl.from(
+      rightRef.current,
+      {
+        x: 80,
+        opacity: 0,
+      },
+      "-=1.6" // overlap with previous animation
+    );
+  }, []);
+
   const socialLinks = [
     {
       icon: Github,
@@ -16,13 +43,20 @@ export default function Hero() {
       label: "LinkedIn",
     },
     { icon: Mail, href: "mailto:pathakdivy03@gmail.com", label: "Email" },
-    { icon: FileText, href: "https://drive.google.com/file/d/1M5s6rLg6F9-Odv_Uw0m1AFFR9BkSlD_F/view?usp=sharing", label: "Resume" },
+    {
+      icon: FileText,
+      href: "https://drive.google.com/file/d/1M5s6rLg6F9-Odv_Uw0m1AFFR9BkSlD_F/view?usp=sharing",
+      label: "Resume",
+    },
   ];
 
   return (
     <div className="w-screen min-h-screen lg:h-screen flex flex-col lg:flex-row backdrop-blur-xl overflow-hidden">
       {/* Left Section - Name and ASCII */}
-      <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-6 sm:p-8 lg:p-12 min-h-[50vh] lg:min-h-0">
+      <div
+        ref={leftRef}
+        className="w-full lg:w-1/2 flex flex-col items-center justify-center p-6 sm:p-8 lg:p-12 min-h-[50vh] lg:min-h-0"
+      >
         <div className="w-full max-w-xl flex flex-col items-center">
           {/* Terminal Header */}
           <div className="flex items-center gap-2 mb-6 text-blue-500">
@@ -103,7 +137,10 @@ _)      \.___.,|     .'
       </div>
 
       {/* Right Section - About */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 lg:p-12 min-h-[50vh] lg:min-h-0">
+      <div
+        ref={rightRef}
+        className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-8 lg:p-12 min-h-[50vh] lg:min-h-0"
+      >
         <div className="w-full max-w-2xl">
           {/* File Header */}
           <div className="flex items-center gap-2 mb-6">
@@ -173,3 +210,4 @@ _)      \.___.,|     .'
     </div>
   );
 }
+

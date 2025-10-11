@@ -2,6 +2,13 @@
 
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { gsap } from "gsap";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
 
 export interface BentoCardProps {
   color?: string;
@@ -11,6 +18,8 @@ export interface BentoCardProps {
   textAutoHide?: boolean;
   disableAnimations?: boolean;
   image?: string;
+  liveLink?: string;
+  ghLink?: string;
 }
 
 export interface BentoProps {
@@ -41,7 +50,9 @@ const cardData: BentoCardProps[] = [
     label: "Football player Auction Platform",
     image:
       // "https://ik.imagekit.io/excl/Untitled%20design.png?updatedAt=1759604894662",
-      "https://ik.imagekit.io/excl/Kickbid.png"
+      "https://ik.imagekit.io/excl/Kickbid.png",
+    liveLink: "https://kickbid.onrender.com",
+    ghLink: "https://github.com/divy-03/kickbid-client-js"
   },
   {
     color: "#060010",
@@ -49,6 +60,8 @@ const cardData: BentoCardProps[] = [
     description: "A personal blogging platform built with Hugo and customized using the Reimu theme. Deployed on netlify with custom CI/CD pipelines.",
     label: "Personal Blogging Platform",
     image: "https://ik.imagekit.io/excl/HugoBlog.png",
+    liveLink: "https://blog-excl.netlify.app",
+    ghLink: "https://github.com/divy-03/hugo-blog-website"
   },
   {
     color: "#060010",
@@ -58,6 +71,8 @@ const cardData: BentoCardProps[] = [
     label: "Leave Management System",
     image:
     "https://ik.imagekit.io/excl/Leafman.png",
+    liveLink: "https://leafront.vercel.app",
+    ghLink: "https://github.com/divy-03/Leafront"
   },
   {
     color: "#060010",
@@ -66,6 +81,8 @@ const cardData: BentoCardProps[] = [
     "Features include advanced filtering, detailed car pages, image generation & uploads via ImageKit, and seamless seller-buyer interaction.",
     label: "AI-Powered Car Marketplace Web App",
     image: "https://ik.imagekit.io/excl/Carido.png",
+    liveLink: "https://carido.vercel.app",
+    ghLink: "https://github.com/divy-03/car-app"
   },
   {
     color: "#060010",
@@ -74,6 +91,8 @@ const cardData: BentoCardProps[] = [
       "A comprehensive B2B supply chain management platform that connects suppliers and vendors",
     label: "Supply Chain Management Platform",
     image: "https://ik.imagekit.io/gox6cqdis/SupplySetu.png",
+    liveLink: "https://supplysetu-client.onrender.com",
+    ghLink: "https://github.com/hackathonseries/Supply-Setu"
   },
   {
     color: "#060010",
@@ -82,6 +101,8 @@ const cardData: BentoCardProps[] = [
       "Personal Portfolio older version developed to display my gsap, animation skills.",
     label: "Portfolio with Animations",
     image: "https://ik.imagekit.io/gox6cqdis/portfolio.png",
+    liveLink: "https://portfolio-divy.netlify.app",
+    ghLink: "https://github.com/divy-03/MyPortfolio"
   },
 ];
 
@@ -588,6 +609,9 @@ const MagicBento: React.FC<BentoProps> = ({
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
+  const [selectedCard, setSelectedCard] = useState<BentoCardProps | null>(
+    null
+  );
 
   return (
     <>
@@ -745,6 +769,41 @@ const MagicBento: React.FC<BentoProps> = ({
               "--glow-radius": "200px",
             } as React.CSSProperties;
 
+            const cardContent = (
+              <div
+                onClick={() => setSelectedCard(card)}
+                className="cursor-pointer flex flex-col justify-between h-full"
+              >
+                <div className="card__header flex justify-between gap-3 relative text-white">
+                  <h3 className="card__label font-bold text-base">
+                    {card.title}
+                  </h3>
+                </div>
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="w-[90%] h-auto m-auto"
+                />
+
+                <div className="card__content flex flex-col relative text-white">
+                  <span
+                    className={`card__title font-normal text-base m-0 mb-1 ${
+                      textAutoHide ? "text-clamp-1" : ""
+                    }`}
+                  >
+                    {card.label}
+                  </span>
+                  <p
+                    className={`card__description text-xs leading-5 opacity-90 ${
+                      textAutoHide ? "text-clamp-2" : ""
+                    }`}
+                  >
+                    {card.description}
+                  </p>
+                </div>
+              </div>
+            );
+
             if (enableStars) {
               return (
                 <ParticleCard
@@ -758,33 +817,7 @@ const MagicBento: React.FC<BentoProps> = ({
                   clickEffect={clickEffect}
                   enableMagnetism={enableMagnetism}
                 >
-                  <div className="card__header flex justify-between gap-3 relative text-white">
-                    <h3 className="card__label font-bold text-base">
-                      {card.title}
-                    </h3>
-                  </div>
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-[90%] h-auto m-auto"
-                  />
-
-                  <div className="card__content flex flex-col relative text-white">
-                    <span
-                      className={`card__title font-normal text-base m-0 mb-1 ${
-                        textAutoHide ? "text-clamp-1" : ""
-                      }`}
-                    >
-                      {card.label}
-                    </span>
-                    <p
-                      className={`card__description text-xs leading-5 opacity-90 ${
-                        textAutoHide ? "text-clamp-2" : ""
-                      }`}
-                    >
-                      {card.description}
-                    </p>
-                  </div>
+                  {cardContent}
                 </ParticleCard>
               );
             }
@@ -904,30 +937,49 @@ const MagicBento: React.FC<BentoProps> = ({
                   el.addEventListener("click", handleClick);
                 }}
               >
-                <div className="card__header flex justify-between gap-3 relative text-white">
-                  <span className="card__label text-base">{card.label}</span>
-                </div>
-                <div className="card__content flex flex-col relative text-white">
-                  <h3
-                    className={`card__title font-normal text-base m-0 mb-1 ${
-                      textAutoHide ? "text-clamp-1" : ""
-                    }`}
-                  >
-                    {card.title}
-                  </h3>
-                  <p
-                    className={`card__description text-xs leading-5 opacity-90 ${
-                      textAutoHide ? "text-clamp-2" : ""
-                    }`}
-                  >
-                    {card.description}
-                  </p>
-                </div>
+                {cardContent}
               </div>
             );
           })}
         </div>
       </BentoCardGrid>
+      {selectedCard && (
+        <Dialog
+          open={!!selectedCard}
+          onOpenChange={(isOpen) => {
+            if (!isOpen) setSelectedCard(null);
+          }}
+        >
+          <DialogContent className="bg-zinc-900 border-zinc-800 text-white w-[90vw] max-w-[90vw] sm:w-[70vw] sm:max-w-[70vw] h-[80vh] flex flex-col">
+            <DialogHeader>
+              <DialogTitle>{selectedCard.title}</DialogTitle>
+              <DialogDescription className="text-zinc-400">
+                {selectedCard.label}
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex-grow pr-4">
+              <img
+                src={selectedCard.image}
+                alt={selectedCard.title}
+                className="w-[70%] h-auto rounded-md mt-4 m-auto"
+              />
+            </div>
+            <div className="flex justify-end gap-4 mt-4 pt-4 border-t border-zinc-800">
+              <p className="text-zinc-300 mt-4">{selectedCard.description}</p>
+              {selectedCard.ghLink && (
+                <a href={selectedCard.ghLink} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-md text-white">
+                  GitHub
+                </a>
+              )}
+              {selectedCard.liveLink && (
+                <a href={selectedCard.liveLink} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-md text-white">
+                  Live Demo
+                </a>
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </>
   );
 };
