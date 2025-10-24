@@ -50,7 +50,7 @@ export default function Hero() {
   ];
 
   return (
-    <div className="w-screen min-h-screen lg:h-screen flex flex-col lg:flex-row backdrop-blur-xl overflow-hidden">
+    <div className="w-screen min-h-screen lg:h-screen flex flex-col lg:flex-row backdrop-blur-sm overflow-hidden">
       {/* Left Section - Name and ASCII */}
       <div
         ref={leftRef}

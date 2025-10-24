@@ -27,7 +27,7 @@ const BackgroundAnimation: React.FC<BackgroundAnimationProps> = ({
 
     const chars =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const fontSize = 16;
+    const fontSize = 26;
     const columns = Math.floor(width / fontSize);
     const drops: number[] = [];
 
