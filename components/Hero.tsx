@@ -45,7 +45,7 @@ export default function Hero() {
     { icon: Mail, href: "mailto:pathakdivy03@gmail.com", label: "Email" },
     {
       icon: FileText,
-      href: "https://drive.google.com/file/d/1M5s6rLg6F9-Odv_Uw0m1AFFR9BkSlD_F/view?usp=sharing",
+      href: "https://drive.google.com/file/d/1r-ClrXKFVYipRr-j1QBwkdGUJVm9hXo9/view?usp=sharing",
       label: "Resume",
     },
   ];
